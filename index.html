@@ -1,0 +1,1456 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TAX सारथी - One Stop For All Tax Solution</title>
+    <meta name="description" content="Professional tax consultancy services by Advocate Sunil Dutt Sharma and Satyawan. Expert solutions for Income Tax, Sales Tax, and more.">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #e5e7eb;
+            background: #111827;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(17, 24, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 0;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #4ade80;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: #e5e7eb;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: #4ade80;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #4ade80;
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #e5e7eb;
+            margin: 3px 0;
+            transition: 0.3s;
+            border-radius: 2px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(135deg, #1a1a1a 0%, #2d1b69 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .laser-flow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            opacity: 0.8;
+        }
+
+        #lights {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+
+        #lights canvas {
+            width: 100%;
+            height: 100%;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(ellipse at center, rgba(45, 80, 22, 0.3) 0%, rgba(45, 80, 22, 0.1) 50%, transparent 100%);
+            z-index: 2;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            z-index: 2;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero .tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+            animation: fadeInUp 1s ease 0.3s both;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary {
+            background: #dc2626;
+            color: white;
+            box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-primary:hover {
+            background: #b91c1c;
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: #111827;
+        }
+
+        /* Owners Section */
+        .owners {
+            padding: 80px 0;
+            background: #1f2937;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            color: #4ade80;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #dc2626;
+            border-radius: 2px;
+        }
+
+        .owners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 4rem;
+        }
+
+        .owner-card {
+            background: #374151;
+            padding: 2rem;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .owner-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(74, 222, 128, 0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .owner-card:hover::before {
+            left: 100%;
+        }
+
+        .owner-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .owner-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #4ade80, #22c55e);
+            margin: 0 auto 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #111827;
+            border: 4px solid #4b5563;
+        }
+
+        .owner-name {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #4ade80;
+            margin-bottom: 0.5rem;
+        }
+
+        .owner-title {
+            color: #d1d5db;
+            font-size: 1.1rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px 0;
+            background: #111827;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 4rem;
+        }
+
+        .service-card {
+            background: #1f2937;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #4ade80, #dc2626);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            border-color: #4b5563;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #4ade80;
+            margin-bottom: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            color: #dc2626;
+            transform: scale(1.1);
+        }
+
+        .service-title {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #4ade80;
+            margin-bottom: 1rem;
+        }
+
+        .service-desc {
+            color: #d1d5db;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px 0;
+            background: linear-gradient(135deg, #1f2937 0%, #374151 100%);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+
+        .contact-info {
+            background: #111827;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #1f2937;
+            transform: translateX(5px);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+            color: #4ade80;
+            margin-right: 1rem;
+            width: 30px;
+        }
+
+        .contact-item a {
+            color: #e5e7eb;
+            text-decoration: none;
+            font-weight: 500;
+        }
+
+        .contact-item a:hover {
+            color: #4ade80;
+        }
+
+        .contact-form {
+            background: #111827;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #4b5563;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background: #1f2937;
+            color: #e5e7eb;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #4ade80;
+            background: #111827;
+            box-shadow: 0 0 0 3px rgba(74, 222, 128, 0.1);
+        }
+
+        .form-group label {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            color: #9ca3af;
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        .form-group input:focus + label,
+        .form-group input:not(:placeholder-shown) + label,
+        .form-group textarea:focus + label,
+        .form-group textarea:not(:placeholder-shown) + label {
+            top: -10px;
+            left: 10px;
+            font-size: 0.8rem;
+            color: #4ade80;
+            background: #111827;
+            padding: 0 5px;
+        }
+
+        /* Footer */
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 3rem 0 1rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: #4ade80;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: #d1d5db;
+            text-decoration: none;
+            line-height: 1.8;
+        }
+
+        .footer-section a:hover {
+            color: white;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: #374151;
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            background: #4ade80;
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #374151;
+            color: #9ca3af;
+        }
+
+        /* WhatsApp Float */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            background: #25d366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: white;
+            text-decoration: none;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite;
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(37, 211, 102, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: #111827;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                padding: 2rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero .tagline {
+                font-size: 1.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .owners-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 1rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero .tagline {
+                font-size: 1rem;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">TAX सारथी</a>
+            <ul class="nav-menu">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#owners">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div id="lights"></div>
+        <div id="laser-flow" class="laser-flow-container"></div>
+        <div class="hero-content">
+            <h1>TAX सारथी</h1>
+            <p class="tagline">One Stop For All Tax Solution</p>
+            <div class="cta-buttons">
+                <a href="#services" class="btn btn-primary">Our Services</a>
+                <a href="#contact" class="btn btn-secondary">Get Consultation</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Owners Section -->
+    <section id="owners" class="owners">
+        <div class="container">
+            <h2 class="section-title fade-in">Meet Our Experts</h2>
+            <div class="owners-grid">
+                <div class="owner-card fade-in">
+                    <div class="owner-avatar">
+                        <i class="fas fa-user-tie"></i>
+                    </div>
+                    <h3 class="owner-name">Advocate Sunil Dutt Sharma</h3>
+                    <p class="owner-title">Senior Tax Consultant & Legal Advisor</p>
+                </div>
+                <div class="owner-card fade-in">
+                    <div class="owner-avatar">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="owner-name">Satyawan</h3>
+                    <p class="owner-title">Tax Expert & Financial Advisor</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Services</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-file-invoice-dollar"></i>
+                    </div>
+                    <h3 class="service-title">Income Tax</h3>
+                    <p class="service-desc">Complete income tax filing, planning, and compliance services for individuals and businesses.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <h3 class="service-title">Sales Tax</h3>
+                    <p class="service-desc">Expert sales tax consultation, registration, and return filing services.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-handshake"></i>
+                    </div>
+                    <h3 class="service-title">Services Tax</h3>
+                    <p class="service-desc">Comprehensive service tax advisory and compliance management.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-gem"></i>
+                    </div>
+                    <h3 class="service-title">Wealth Tax</h3>
+                    <p class="service-desc">Wealth tax planning and advisory services for high net worth individuals.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-industry"></i>
+                    </div>
+                    <h3 class="service-title">Excise</h3>
+                    <p class="service-desc">Excise duty consultation, compliance, and representation services.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-gavel"></i>
+                    </div>
+                    <h3 class="service-title">Assessment Proceedings</h3>
+                    <p class="service-desc">Expert representation in tax assessment and appellate proceedings.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3 class="service-title">Accounting Services</h3>
+                    <p class="service-desc">Professional bookkeeping, financial statements, and accounting solutions.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="service-title">Direct & Indirect Tax</h3>
+                    <p class="service-desc">Comprehensive tax advisory covering all direct and indirect tax matters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-info fade-in">
+                    <h3 style="color: #4ade80; margin-bottom: 2rem;">Get In Touch</h3>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <a href="tel:+919023906141">90239-06141</a><br>
+                            <a href="tel:+919034803677">90348-03677</a>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <a href="mailto:taxsarthee@gmail.com">taxsarthee@gmail.com</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            Janka Puri Colony, New Bye Pass,<br>
+                            Karnal Road, Kaithal - 136027
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-whatsapp"></i>
+                        <a href="https://wa.me/917015236105?text=Hello%20TAX%20सारथी,%20I%20need%20tax%20consultation%20services.">WhatsApp: +91 7015236105</a>
+                    </div>
+                </div>
+                <div class="contact-form fade-in">
+                    <h3 style="color: #4ade80; margin-bottom: 2rem;">Send Message</h3>
+                    <form>
+                        <div class="form-group">
+                            <input type="text" id="name" placeholder=" " required>
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="email" placeholder=" " required>
+                            <label for="email">Email Address</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" placeholder=" ">
+                            <label for="phone">Phone Number</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="message" rows="5" placeholder=" " required></textarea>
+                            <label for="message">Your Message</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>TAX सारथी</h3>
+                    <p>Your trusted partner for all tax-related solutions. We provide expert consultation and comprehensive tax services to individuals and businesses.</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <p><a href="#home">Home</a></p>
+                    <p><a href="#owners">About Us</a></p>
+                    <p><a href="#services">Services</a></p>
+                    <p><a href="#contact">Contact</a></p>
+                </div>
+                <div class="footer-section">
+                    <h3>Services</h3>
+                    <p>Income Tax</p>
+                    <p>Sales Tax</p>
+                    <p>Assessment Proceedings</p>
+                    <p>Accounting Services</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <p><i class="fas fa-phone"></i> 90239-06141</p>
+                    <p><i class="fas fa-envelope"></i> taxsarthee@gmail.com</p>
+                    <p><i class="fas fa-map-marker-alt"></i> Kaithal - 136027</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 TAX सारथी. All rights reserved. | Designed with ❤️ for professional tax services</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/917015236105?text=Hello%20TAX%20सारथी,%20I%20need%20tax%20consultation%20services." class="whatsapp-float" target="_blank" aria-label="Contact us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // LaserFlow Implementation
+        class LaserFlow {
+            constructor(container, options = {}) {
+                this.container = container;
+                this.options = {
+                    wispDensity: 1,
+                    mouseTiltStrength: 0.01,
+                    horizontalBeamOffset: 0.1,
+                    verticalBeamOffset: 0.0,
+                    flowSpeed: 0.35,
+                    verticalSizing: 2.0,
+                    horizontalSizing: 0.5,
+                    fogIntensity: 0.45,
+                    fogScale: 0.3,
+                    wispSpeed: 15.0,
+                    wispIntensity: 5.0,
+                    flowStrength: 0.25,
+                    decay: 1.1,
+                    falloffStart: 1.2,
+                    fogFallSpeed: 0.6,
+                    color: '#2d5016',
+                    ...options
+                };
+                this.init();
+            }
+
+            init() {
+                this.renderer = new THREE.WebGLRenderer({
+                    antialias: false,
+                    alpha: true,
+                    powerPreference: 'high-performance'
+                });
+                
+                this.renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
+                this.renderer.setClearColor(0x000000, 0);
+                
+                const canvas = this.renderer.domElement;
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+                canvas.style.display = 'block';
+                this.container.appendChild(canvas);
+
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
+
+                this.geometry = new THREE.BufferGeometry();
+                this.geometry.setAttribute('position', new THREE.BufferAttribute(
+                    new Float32Array([-1, -1, 0, 3, -1, 0, -1, 3, 0]), 3
+                ));
+
+                this.uniforms = {
+                    iTime: { value: 0 },
+                    iResolution: { value: new THREE.Vector3(1, 1, 1) },
+                    iMouse: { value: new THREE.Vector4(0, 0, 0, 0) },
+                    uWispDensity: { value: this.options.wispDensity },
+                    uTiltScale: { value: this.options.mouseTiltStrength },
+                    uFlowTime: { value: 0 },
+                    uFogTime: { value: 0 },
+                    uBeamXFrac: { value: this.options.horizontalBeamOffset },
+                    uBeamYFrac: { value: this.options.verticalBeamOffset },
+                    uFlowSpeed: { value: this.options.flowSpeed },
+                    uVLenFactor: { value: this.options.verticalSizing },
+                    uHLenFactor: { value: this.options.horizontalSizing },
+                    uFogIntensity: { value: this.options.fogIntensity },
+                    uFogScale: { value: this.options.fogScale },
+                    uWSpeed: { value: this.options.wispSpeed },
+                    uWIntensity: { value: this.options.wispIntensity },
+                    uFlowStrength: { value: this.options.flowStrength },
+                    uDecay: { value: this.options.decay },
+                    uFalloffStart: { value: this.options.falloffStart },
+                    uFogFallSpeed: { value: this.options.fogFallSpeed },
+                    uColor: { value: this.hexToRGB(this.options.color) },
+                    uFade: { value: 0 }
+                };
+
+                const vertexShader = `
+                    precision highp float;
+                    attribute vec3 position;
+                    void main(){
+                        gl_Position = vec4(position, 1.0);
+                    }
+                `;
+
+                const fragmentShader = `
+                    #ifdef GL_ES
+                    #extension GL_OES_standard_derivatives : enable
+                    #endif
+                    precision highp float;
+                    precision mediump int;
+                    
+                    uniform float iTime;
+                    uniform vec3 iResolution;
+                    uniform vec4 iMouse;
+                    uniform float uWispDensity;
+                    uniform float uTiltScale;
+                    uniform float uFlowTime;
+                    uniform float uFogTime;
+                    uniform float uBeamXFrac;
+                    uniform float uBeamYFrac;
+                    uniform float uFlowSpeed;
+                    uniform float uVLenFactor;
+                    uniform float uHLenFactor;
+                    uniform float uFogIntensity;
+                    uniform float uFogScale;
+                    uniform float uWSpeed;
+                    uniform float uWIntensity;
+                    uniform float uFlowStrength;
+                    uniform float uDecay;
+                    uniform float uFalloffStart;
+                    uniform float uFogFallSpeed;
+                    uniform vec3 uColor;
+                    uniform float uFade;
+                    
+                    #define PI 3.14159265359
+                    #define TWO_PI 6.28318530718
+                    #define EPS 1e-6
+                    
+                    float hash21(vec2 p) {
+                        p = fract(p * vec2(123.34, 456.21));
+                        p += dot(p, p + 34.123);
+                        return fract(p.x * p.y);
+                    }
+                    
+                    float noise(vec2 p) {
+                        vec2 i = floor(p);
+                        vec2 f = fract(p);
+                        float a = hash21(i);
+                        float b = hash21(i + vec2(1, 0));
+                        float c = hash21(i + vec2(0, 1));
+                        float d = hash21(i + vec2(1, 1));
+                        vec2 u = f * f * (3.0 - 2.0 * f);
+                        return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+                    }
+                    
+                    float fbm(vec2 p) {
+                        float v = 0.0;
+                        float amp = 0.6;
+                        mat2 m = mat2(0.86, 0.5, -0.5, 0.86);
+                        for(int i = 0; i < 5; ++i) {
+                            v += amp * noise(p);
+                            p = m * p * 2.03 + 17.1;
+                            amp *= 0.52;
+                        }
+                        return v;
+                    }
+                    
+                    void mainImage(out vec4 fragColor, in vec2 fragCoord) {
+                        vec2 uv = (fragCoord - 0.5 * iResolution.xy) / iResolution.y;
+                        
+                        float time = iTime * 0.5;
+                        vec2 p = uv * 3.0;
+                        
+                        // Create flowing laser beam effect
+                        float beam = 0.0;
+                        for(int i = 0; i < 3; i++) {
+                            float fi = float(i);
+                            vec2 offset = vec2(sin(time + fi * 2.0) * 0.3, cos(time * 0.7 + fi) * 0.2);
+                            float dist = length(p + offset);
+                            beam += 0.02 / (dist + 0.01) * (1.0 + sin(time * 2.0 + fi * PI) * 0.5);
+                        }
+                        
+                        // Add flowing wisps
+                        float wisps = 0.0;
+                        for(int i = 0; i < 8; i++) {
+                            float fi = float(i);
+                            vec2 wispPos = vec2(
+                                sin(time * uWSpeed * 0.1 + fi * 0.8) * 2.0,
+                                cos(time * uWSpeed * 0.07 + fi * 1.2) * 1.5
+                            );
+                            float wispDist = length(p - wispPos);
+                            wisps += 0.005 / (wispDist + 0.005) * uWIntensity;
+                        }
+                        
+                        // Add fog effect
+                        vec2 fogUV = uv * uFogScale + time * uFogFallSpeed * 0.1;
+                        float fog = fbm(fogUV) * uFogIntensity;
+                        fog *= smoothstep(2.0, 0.0, length(uv));
+                        
+                        float intensity = beam + wisps + fog;
+                        intensity *= uFade;
+                        
+                        vec3 color = intensity * uColor;
+                        fragColor = vec4(color, intensity * 0.8);
+                    }
+                    
+                    void main() {
+                        vec4 fragColor;
+                        mainImage(fragColor, gl_FragCoord.xy);
+                        gl_FragColor = fragColor;
+                    }
+                `;
+
+                this.material = new THREE.RawShaderMaterial({
+                    vertexShader,
+                    fragmentShader,
+                    uniforms: this.uniforms,
+                    transparent: true,
+                    blending: THREE.AdditiveBlending
+                });
+
+                this.mesh = new THREE.Mesh(this.geometry, this.material);
+                this.scene.add(this.mesh);
+
+                this.clock = new THREE.Clock();
+                this.mouseTarget = new THREE.Vector2(0, 0);
+                this.mouseSmooth = new THREE.Vector2(0, 0);
+                
+                this.setupEventListeners();
+                this.resize();
+                this.animate();
+            }
+
+            hexToRGB(hex) {
+                let c = hex.trim();
+                if (c[0] === '#') c = c.slice(1);
+                if (c.length === 3) c = c.split('').map(x => x + x).join('');
+                const n = parseInt(c, 16) || 0xffffff;
+                return new THREE.Vector3(
+                    ((n >> 16) & 255) / 255,
+                    ((n >> 8) & 255) / 255,
+                    (n & 255) / 255
+                );
+            }
+
+            setupEventListeners() {
+                window.addEventListener('resize', () => this.resize());
+                
+                this.container.addEventListener('mousemove', (e) => {
+                    const rect = this.container.getBoundingClientRect();
+                    this.mouseTarget.set(
+                        (e.clientX - rect.left) / rect.width * 2 - 1,
+                        -(e.clientY - rect.top) / rect.height * 2 + 1
+                    );
+                });
+            }
+
+            resize() {
+                const w = this.container.clientWidth || 1;
+                const h = this.container.clientHeight || 1;
+                this.renderer.setSize(w, h, false);
+                this.uniforms.iResolution.value.set(w, h, 1);
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                
+                const t = this.clock.getElapsedTime();
+                const dt = Math.min(0.033, this.clock.getDelta());
+                
+                this.uniforms.iTime.value = t;
+                this.uniforms.uFlowTime.value += dt;
+                this.uniforms.uFogTime.value += dt;
+                
+                // Smooth fade in
+                if (this.uniforms.uFade.value < 1) {
+                    this.uniforms.uFade.value = Math.min(1, this.uniforms.uFade.value + dt * 0.5);
+                }
+                
+                // Smooth mouse following
+                this.mouseSmooth.lerp(this.mouseTarget, 0.05);
+                this.uniforms.iMouse.value.set(
+                    this.mouseSmooth.x * this.container.clientWidth,
+                    this.mouseSmooth.y * this.container.clientHeight,
+                    0, 0
+                );
+                
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        // Hyperspeed Background Implementation
+        class HyperspeedBackground {
+            constructor(container) {
+                this.container = container;
+                this.init();
+            }
+
+            init() {
+                this.renderer = new THREE.WebGLRenderer({ antialias: false, alpha: true });
+                this.renderer.setSize(this.container.offsetWidth, this.container.offsetHeight);
+                this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                this.container.appendChild(this.renderer.domElement);
+
+                this.scene = new THREE.Scene();
+                this.camera = new THREE.PerspectiveCamera(90, this.container.offsetWidth / this.container.offsetHeight, 0.1, 10000);
+                this.camera.position.set(0, 8, -5);
+
+                this.scene.fog = new THREE.Fog(0x000000, 80, 2000);
+                this.clock = new THREE.Clock();
+
+                this.createRoad();
+                this.createLights();
+                
+                window.addEventListener('resize', () => this.onResize());
+                this.animate();
+            }
+
+            createRoad() {
+                const roadGeometry = new THREE.PlaneGeometry(20, 400, 20, 100);
+                const roadMaterial = new THREE.ShaderMaterial({
+                    uniforms: {
+                        uTime: { value: 0 },
+                        uColor: { value: new THREE.Color(0x080808) }
+                    },
+                    vertexShader: `
+                        uniform float uTime;
+                        varying vec2 vUv;
+                        void main() {
+                            vec3 pos = position;
+                            pos.z += sin(pos.x * 0.1 + uTime) * 2.0;
+                            gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+                            vUv = uv;
+                        }
+                    `,
+                    fragmentShader: `
+                        uniform vec3 uColor;
+                        uniform float uTime;
+                        varying vec2 vUv;
+                        void main() {
+                            vec2 uv = vUv;
+                            uv.y = mod(uv.y + uTime * 0.05, 1.0);
+                            float lines = step(0.95, fract(uv.x * 4.0)) * step(0.5, fract(uv.y * 20.0));
+                            vec3 color = mix(uColor, vec3(1.0), lines * 0.3);
+                            gl_FragColor = vec4(color, 1.0);
+                        }
+                    `
+                });
+
+                this.road = new THREE.Mesh(roadGeometry, roadMaterial);
+                this.road.rotation.x = -Math.PI / 2;
+                this.road.position.z = -200;
+                this.scene.add(this.road);
+            }
+
+            createLights() {
+                const lightGeometry = new THREE.SphereGeometry(0.1, 8, 8);
+                this.lights = new THREE.Group();
+
+                for (let i = 0; i < 100; i++) {
+                    const lightMaterial = new THREE.MeshBasicMaterial({
+                        color: Math.random() > 0.5 ? 0x03b3c3 : 0xd856bf,
+                        transparent: true,
+                        opacity: 0.8
+                    });
+                    
+                    const light = new THREE.Mesh(lightGeometry, lightMaterial);
+                    light.position.set(
+                        (Math.random() - 0.5) * 15,
+                        Math.random() * 2 + 0.5,
+                        -Math.random() * 400
+                    );
+                    
+                    light.userData = {
+                        speed: Math.random() * 100 + 50,
+                        originalZ: light.position.z
+                    };
+                    
+                    this.lights.add(light);
+                }
+                
+                this.scene.add(this.lights);
+            }
+
+            onResize() {
+                const width = this.container.offsetWidth;
+                const height = this.container.offsetHeight;
+                this.renderer.setSize(width, height);
+                this.camera.aspect = width / height;
+                this.camera.updateProjectionMatrix();
+            }
+
+            animate() {
+                requestAnimationFrame(() => this.animate());
+                
+                const time = this.clock.getElapsedTime();
+                const delta = this.clock.getDelta();
+                
+                // Update road
+                if (this.road) {
+                    this.road.material.uniforms.uTime.value = time;
+                }
+                
+                // Update lights
+                this.lights.children.forEach(light => {
+                    light.position.z += light.userData.speed * delta;
+                    if (light.position.z > 10) {
+                        light.position.z = light.userData.originalZ;
+                    }
+                });
+                
+                this.renderer.render(this.scene, this.camera);
+            }
+        }
+
+        // Initialize backgrounds
+        document.addEventListener('DOMContentLoaded', () => {
+            const lightsContainer = document.getElementById('lights');
+            const laserContainer = document.getElementById('laser-flow');
+            
+            if (lightsContainer) {
+                new HyperspeedBackground(lightsContainer);
+            }
+            
+            if (laserContainer) {
+                new LaserFlow(laserContainer, {
+                    color: '#4ade80',
+                    fogIntensity: 0.2,
+                    wispIntensity: 2.0,
+                    flowSpeed: 0.3
+                });
+            }
+        });
+
+        // Mobile Navigation Toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('.nav-menu a').forEach(n => n.addEventListener('click', () => {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+        }));
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.style.background = 'rgba(17, 24, 39, 0.98)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.4)';
+            } else {
+                navbar.style.background = 'rgba(17, 24, 39, 0.95)';
+                navbar.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.3)';
+            }
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all fade-in elements
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Form submission
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Get form data
+            const formData = new FormData(this);
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const message = document.getElementById('message').value;
+            
+            // Create WhatsApp message
+            const whatsappMessage = `Hello TAX सारथी,
+
+Name: ${name}
+Email: ${email}
+Phone: ${phone}
+
+Message: ${message}
+
+I would like to discuss tax consultation services.`;
+            
+            // Open WhatsApp with pre-filled message
+            const whatsappUrl = `https://wa.me/917015236105?text=${encodeURIComponent(whatsappMessage)}`;
+            window.open(whatsappUrl, '_blank');
+            
+            // Reset form
+            this.reset();
+            
+            // Show success message
+            alert('Thank you! Your message has been prepared for WhatsApp. Please send it to complete your inquiry.');
+        });
+
+        // Add loading animation
+        window.addEventListener('load', () => {
+            document.body.style.opacity = '1';
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            if (hero) {
+                hero.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add hover effects to service cards
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-10px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+
+        // Add click effect to buttons
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                let ripple = document.createElement('span');
+                ripple.classList.add('ripple');
+                this.appendChild(ripple);
+                
+                let x = e.clientX - e.target.offsetLeft;
+                let y = e.clientY - e.target.offsetTop;
+                
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
